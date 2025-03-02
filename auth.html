@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Servi: Inicia sesión o regístrate para encontrar profesionales de mantenimiento.">
+  <meta name="keywords" content="mantenimiento, fontanero, electricista, constructor, servicios, app, autenticación">
+  <meta name="author" content="Servi Team">
+  <title>Servi - Iniciar Sesión / Registrarse</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- Enlace al CSS -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Contenedor principal -->
+  <div class="container">
+    <!-- Encabezado -->
+    <header class="header">
+      <div class="header-left">
+        <h1 class="logo" onclick="goToHome()">Servi</h1>
+      </div>
+      <nav class="header-right">
+        <div class="search-bar">
+          <input type="text" id="search-input" placeholder="Busca un servicio..." onkeyup="filterServices()">
+          <span class="search-icon">🔍</span>
+        </div>
+        <a href="index.html#categories" class="header-link">Servicios</a>
+        <a href="index.html#testimonials" class="header-link">Testimonios</a>
+        <a href="index.html#contact" class="header-link">Contáctanos</a>
+        <a href="profile.html" class="header-link" id="profile-link"></a>
+        <a href="#" class="header-link auth-link" id="auth-link">Iniciar Sesión / Registrarse</a>
+      </nav>
+    </header>
+
+    <!-- Sección de Autenticación -->
+    <section class="auth-section">
+      <h2 class="letra">Bienvenido a Servi</h2>
+      
+      <!-- Pestañas para alternar entre Iniciar Sesión y Registrarse -->
+      <div class="auth-tabs animate">
+        <button class="tab active" onclick="showTab('login')">Iniciar Sesión</button>
+        <button class="tab" onclick="showTab('register')">Registrarse</button>
+      </div>
+
+      <!-- Formulario de Iniciar Sesión -->
+      <div class="auth-form animate" id="login-form">
+        <form id="loginForm" onsubmit="handleLogin(event)">
+          <label for="login-email">Correo Electrónico:</label>
+          <input type="email" id="login-email" name="email" required>
+          
+          <label for="login-password">Contraseña:</label>
+          <input type="password" id="login-password" name="password" required>
+          
+          <button type="submit" class="auth-btn">Iniciar Sesión</button>
+        </form>
+        <p id="login-message" class="auth-message"></p>
+      </div>
+
+      <!-- Formulario de Registrarse -->
+      <div class="auth-form hidden animate" id="register-form">
+        <form id="registerForm" onsubmit="handleRegister(event)">
+          <label for="register-name">Nombre:</label>
+          <input type="text" id="register-name" name="name" required>
+          
+          <label for="register-email">Correo Electrónico:</label>
+          <input type="email" id="register-email" name="email" required>
+          
+          <label for="register-password">Contraseña:</label>
+          <input type="password" id="register-password" name="password" required>
+          
+          <button type="submit" class="auth-btn">Registrarse</button>
+        </form>
+        <p id="register-message" class="auth-message"></p>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Servi</h4>
+        <p>© 2025 Servi. Todos los derechos reservados.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Enlaces Rápidos</h4>
+        <a href="index.html#categories">Servicios</a>
+        <a href="index.html#testimonials">Testimonios</a>
+        <a href="index.html#contact">Contáctanos</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Enlace al JavaScript -->
+  <script src="auth.js"></script>
+</body>
+</html>

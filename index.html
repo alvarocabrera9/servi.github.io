@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Servi: Conecta con profesionales de mantenimiento de manera rápida y confiable.">
+  <meta name="keywords" content="mantenimiento, fontanero, electricista, constructor, servicios, app">
+  <meta name="author" content="Servi Team">
+  <title>Servi - Conecta con Profesionales</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- Enlace al CSS -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Contenedor principal -->
+  <div class="container">
+    <!-- Encabezado -->
+    <header class="header">
+      <div class="header-left">
+        <h1 class="logo" onclick="goToHome()">Servi</h1>
+      </div>
+      <nav class="header-right">
+        <div class="search-bar">
+          <input type="text" id="search-input" placeholder="Busca un servicio..." onkeyup="filterServices()">
+          <span class="search-icon">🔍</span>
+        </div>
+        <a href="#categories" class="header-link">Servicios</a>
+        <a href="#testimonials" class="header-link">Testimonios</a>
+        <a href="#contact" class="header-link">Contáctanos</a>
+        <a href="profile.html" class="header-link" id="profile-link"></a>
+        <a href="auth.html" class="header-link auth-link" id="auth-link">Iniciar Sesión / Registrarse</a>
+      </nav>
+    </header>
+
+    <!-- Título principal -->
+    <section class="hero">
+      <h2 class="title animate">PIDE. SOLUCIONA. SERVI</h2>
+      <p class="subtitle animate">Conecta con profesionales de confianza en minutos.</p>
+      <a href="#categories" class="cta-button animate">Encuentra un Servicio</a>
+    </section>
+
+    <!-- Grid de categorías -->
+    <section class="categories" id="categories">
+      <h3 class="section-title animate">¿Qué servicio necesitas?</h3>
+      <div class="categories-grid">
+        <div class="category-box animate" data-category="Fontanero">
+          <span class="category-icon">🔧</span>
+          <span class="category-text">Fontanero</span>
+        </div>
+        <div class="category-box animate" data-category="Electricista">
+          <span class="category-icon">⚡</span>
+          <span class="category-text">Electricista</span>
+        </div>
+        <div class="category-box animate" data-category="Constructor">
+          <span class="category-icon">🛠️</span>
+          <span class="category-text">Constructor</span>
+        </div>
+        <div class="category-box animate" data-category="Jardinero">
+          <span class="category-icon">🌿</span>
+          <span class="category-text">Jardinero</span>
+        </div>
+        <div class="category-box animate" data-category="Carpintero">
+          <span class="category-icon">📏</span>
+          <span class="category-text">Carpintero</span>
+        </div>
+        <div class="category-box animate" data-category="Pintor">
+          <span class="category-icon">🎨</span>
+          <span class="category-text">Pintor</span>
+        </div>
+        <div class="category-box animate" data-category="Cerrajero">
+          <span class="category-icon">🔒</span>
+          <span class="category-text">Cerrajero</span>
+        </div>
+        <div class="category-box animate" data-category="Limpiador">
+          <span class="category-icon">🧹</span>
+          <span class="category-text">Limpiador</span>
+        </div>
+        <div class="category-box animate" data-category="Técnico de Aire Acondicionado">
+          <span class="category-icon">❄️</span>
+          <span class="category-text">Técnico de Aire Acondicionado</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección de búsqueda dinámica -->
+    <section class="search-results hidden" id="search-results">
+      <h3 class="section-title animate">Buscando <span id="category-name"></span>...</h3>
+      <div class="professionals-list" id="professionals-list">
+        <!-- Los profesionales se añadirán dinámicamente con JavaScript -->
+      </div>
+      <button class="back-btn animate" onclick="goBackToCategories()">Volver a Categorías</button>
+    </section>
+
+    <!-- Sección de programación de servicio -->
+    <section class="schedule-service hidden" id="schedule-service">
+      <h3 class="section-title animate">Programa tu Servicio con <span id="professional-name"></span></h3>
+      <div class="schedule-form">
+        <div class="schedule-option">
+          <input type="radio" id="urgent" name="schedule-type" value="urgent" onchange="toggleScheduleType()" checked>
+          <label for="urgent">Solicitar para hoy (urgente)</label>
+        </div>
+        <div class="schedule-option">
+          <input type="radio" id="custom" name="schedule-type" value="custom" onchange="toggleScheduleType()">
+          <label for="custom">Seleccionar fecha y hora</label>
+        </div>
+        <div class="custom-schedule hidden" id="custom-schedule">
+          <label for="service-date">Fecha:</label>
+          <input type="date" id="service-date" required>
+          
+          <label for="service-time">Hora:</label>
+          <input type="time" id="service-time" required>
+        </div>
+        <div class="payment-method">
+          <label for="payment-method">Método de Pago:</label>
+          <select id="payment-method" required>
+            <option value="efectivo">Efectivo</option>
+            <option value="tarjeta">Tarjeta</option>
+            <option value="transferencia">Transferencia</option>
+          </select>
+        </div>
+        <button class="confirm-btn" onclick="confirmService()">Confirmar Servicio</button>
+      </div>
+      <button class="back-btn animate" onclick="goBackToProfessionals()">Volver a Profesionales</button>
+    </section>
+
+    <!-- Sección de Testimonios -->
+    <section class="testimonials" id="testimonials">
+      <h3 class="section-title animate">Lo que dicen nuestros clientes</h3>
+      <div class="testimonials-grid">
+        <div class="testimonial-card animate">
+          <p>"Encontré un fontanero excelente en minutos. ¡Servicio rápido y profesional!"</p>
+          <h4>María G.</h4>
+        </div>
+        <div class="testimonial-card animate">
+          <p>"El electricista llegó a tiempo y resolvió mi problema de inmediato. ¡Recomendado!"</p>
+          <h4>Carlos L.</h4>
+        </div>
+        <div class="testimonial-card animate">
+          <p>"La mejor plataforma para encontrar profesionales de confianza. ¡Increíble!"</p>
+          <h4>Laura F.</h4>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección Contáctanos -->
+    <section class="contact" id="contact">
+      <h3 class="section-title animate">Contáctanos</h3>
+      <p class="animate">¿Tienes alguna duda? Escríbenos a <a href="mailto:soporte@serviapp.com">soporte@serviapp.com</a> o llámanos al <a href="tel:+1234567890">+34 683 144 621</a>.</p>
+    </section>
+  </div>
+
+  <!-- Notificación -->
+  <div class="notification" id="notification"></div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Servi</h4>
+        <p>© 2025 Servi. Todos los derechos reservados.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Enlaces Rápidos</h4>
+        <a href="#categories">Servicios</a>
+        <a href="#testimonials">Testimonios</a>
+        <a href="#contact">Contáctanos</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Enlace al JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Servi: Perfil de usuario y historial de servicios.">
+  <meta name="keywords" content="mantenimiento, fontanero, electricista, constructor, servicios, app, perfil">
+  <meta name="author" content="Servi Team">
+  <title>Servi - Mi Perfil</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- Enlace al CSS -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Contenedor principal -->
+  <div class="container">
+    <!-- Encabezado -->
+    <header class="header">
+      <div class="header-left">
+        <h1 class="logo" onclick="goToHome()">Servi</h1>
+      </div>
+      <nav class="header-right">
+        <div class="search-bar">
+          <input type="text" id="search-input" placeholder="Busca un servicio..." onkeyup="filterServices()">
+          <span class="search-icon">🔍</span>
+        </div>
+        <a href="index.html#categories" class="header-link">Servicios</a>
+        <a href="index.html#testimonials" class="header-link">Testimonios</a>
+        <a href="index.html#contact" class="header-link">Contáctanos</a>
+        <a href="#" class="header-link" id="profile-link"></a>
+        <a href="auth.html" class="header-link auth-link" id="auth-link">Iniciar Sesión / Registrarse</a>
+      </nav>
+    </header>
+
+    <!-- Sección de Perfil -->
+    <section class="profile-section">
+      <h2 class="section-title profile-title animate">Mi Perfil</h2>
+      <div class="profile-info animate">
+        <h3 id="user-name">Nombre del Usuario</h3>
+        <p id="user-email">Correo: email@ejemplo.com</p>
+        <button class="logout-btn" onclick="logout()">Cerrar Sesión</button>
+      </div>
+
+      <!-- Profesionales Favoritos -->
+      <div class="favorites-section section-box animate">
+        <h3 class="letra">Profesionales Favoritos</h3>
+        <div class="favorites-list" id="favorites-list">
+          <!-- Los favoritos se añadirán dinámicamente con JavaScript -->
+        </div>
+      </div>
+
+      <!-- Historial de Servicios -->
+      <div class="history-section section-box animate">
+        <h3 class="letra">Historial de Servicios</h3>
+        <table class="history-table" id="history-table">
+          <thead>
+            <tr>
+              <th>Profesional</th>
+              <th>Categoría</th>
+              <th>Fecha</th>
+              <th>Hora</th>
+              <th>Método de Pago</th>
+              <th>Estado</th>
+              <th>Acción</th>
+            </tr>
+          </thead>
+          <tbody id="history-list">
+            <!-- El historial se añadirá dinámicamente con JavaScript -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Sección de reseña -->
+      <div class="review-section hidden" id="review-section">
+        <h3 class="section-title animate">Valora tu Experiencia con <span id="review-professional-name"></span></h3>
+        <div class="review-form">
+          <label for="review-rating">Calificación (1-5):</label>
+          <input type="number" id="review-rating" min="1" max="5" required>
+          
+          <label for="review-comment">Comentario:</label>
+          <textarea id="review-comment" rows="4" required></textarea>
+          
+          <button class="submit-review-btn" onclick="submitReview()">Enviar Reseña</button>
+        </div>
+      </div>
+
+      <!-- Reseñas Realizadas -->
+      <div class="reviews-section section-box animate">
+        <h3 class="letra">Reseñas Realizadas</h3>
+        <div class="reviews-list" id="reviews-list">
+          <!-- Las reseñas se añadirán dinámicamente con JavaScript -->
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Servi</h4>
+        <p>© 2025 Servi. Todos los derechos reservados.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Enlaces Rápidos</h4>
+        <a href="index.html#categories">Servicios</a>
+        <a href="index.html#testimonials">Testimonios</a>
+        <a href="index.html#contact">Contáctanos</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Enlace al JavaScript -->
+  <script src="profile.js"></script>
+</body>
+</html>
